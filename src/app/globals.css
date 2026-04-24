@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* 
+  Tailwind v4 @theme warning in VS Code is safe to ignore. 
+  It is a new feature that standard CSS linters do not yet recognize.
+*/
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #020617;
+  --primary: #020617;
+  --secondary: #64748b;
+  --accent: #10b981;
+  --muted: #f8fafc;
+  --border: #f1f5f9;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --primary: #f8fafc;
+  --secondary: #94a3b8;
+  --accent: #10b981;
+  --muted: #0f172a;
+  --border: #1e293b;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: none !important;
+  }
+  a, button, [role="button"] {
+    cursor: none !important;
+  }
+}
+
+/* Force hide Next.js Dev Indicator Badge */
+[data-nextjs-toast-wrapper], 
+[data-nextjs-static-indicator],
+.__next-dev-indicator {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-heavy {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+  
+  .dark .glass {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .dark .glass-heavy {
+    background: rgba(2, 6, 23, 0.4) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+  }
+  
+  .bg-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(59, 130, 246, 0.5));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: destination-out;
+  }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
