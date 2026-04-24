@@ -11,15 +11,30 @@ export default function Spotlight() {
   const springX = useSpring(mouseX, { stiffness: 100, damping: 20 })
   const springY = useSpring(mouseY, { stiffness: 100, damping: 20 })
 
+  const [isMobile, setIsMobile] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
+    setMounted(true)
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
+      if (window.innerWidth >= 768) {
+          mouseX.set(e.clientX)
+          mouseY.set(e.clientY)
+      }
     }
 
     window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    return () => {
+        window.removeEventListener("resize", handleResize)
+        window.removeEventListener("mousemove", handleMouseMove)
+    }
   }, [mouseX, mouseY])
+
+  if (!mounted || isMobile) return null
 
   return (
     <motion.div

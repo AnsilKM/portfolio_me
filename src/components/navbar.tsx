@@ -107,7 +107,7 @@ export default function Navbar() {
             initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
-            className="absolute top-28 left-4 right-4 p-8 glass rounded-3xl md:hidden border border-white/10 shadow-2xl"
+            className="absolute top-28 left-4 right-4 p-8 bg-background/95 backdrop-blur-2xl rounded-[32px] md:hidden border border-foreground/10 shadow-2xl pointer-events-auto"
           >
             <div className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (
@@ -123,15 +123,6 @@ export default function Navbar() {
                   {link.name}
                 </motion.a>
               ))}
-              <div className="pt-4 border-t border-white/5">
-                <a 
-                  href="/resume.pdf"
-                  className="flex items-center justify-between p-4 bg-accent/10 border border-accent/20 rounded-2xl text-accent font-black tracking-widest uppercase text-xs"
-                >
-                  <span>Download CV</span>
-                  <ArrowRight size={16} />
-                </a>
-              </div>
             </div>
           </motion.div>
         )}

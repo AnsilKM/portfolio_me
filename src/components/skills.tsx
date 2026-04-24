@@ -253,11 +253,12 @@ export default function Skills() {
                         {i < SYSTEM_NODES.length - 1 && (
                             <div className="flex justify-center h-8 relative">
                                 <div className="w-px h-full bg-foreground/10" />
-                                <motion.div 
-                                    animate={{ top: ["0%", "100%"], opacity: [0, 1, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                                    className="absolute w-2 h-2 rounded-full bg-accent shadow-[0_0_10px_#10b981] -left-1 opacity-0"
-                                    style={{ transform: 'translateX(50%)' }}
+                                <div 
+                                    className="absolute w-2 h-2 rounded-full bg-accent -left-1 opacity-0 animate-pulse shadow-[0_0_8px_#10b981]" 
+                                    style={{ 
+                                        transform: 'translateX(50%)',
+                                        animation: 'mobile-pulse 3s linear infinite'
+                                    }}
                                 />
                             </div>
                         )}

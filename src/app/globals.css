@@ -116,3 +116,21 @@ html {
     -webkit-text-fill-color: transparent;
   }
 }
+
+@keyframes mobile-pulse {
+  0% { top: 0%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .glass, .glass-heavy {
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .bg-grid {
+        background-size: 30px 30px;
+    }
+}
