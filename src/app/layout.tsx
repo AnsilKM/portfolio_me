@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Spotlight from "@/components/spotlight";
 import Cursor from "@/components/cursor";
 import SmoothScroll from "@/components/smooth-scroll";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -32,6 +34,8 @@ export default function RootLayout({
             <Spotlight />
             <Cursor />
             {children}
+            <Analytics />
+            <SpeedInsights />
           </SmoothScroll>
         </ThemeProvider>
       </body>
