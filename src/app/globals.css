@@ -1,54 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Cinzel:wght@400..700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Syne:wght@400..800&display=swap");
 @import "tailwindcss";
 
-/* 
-  Tailwind v4 @theme warning in VS Code is safe to ignore. 
-  It is a new feature that standard CSS linters do not yet recognize.
-*/
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-dark: var(--bg-dark);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
   --color-accent: var(--accent);
-  --color-muted: var(--muted);
+  --color-accent-subtle: var(--accent-subtle);
   --color-border: var(--border);
+
+  --font-display: var(--font-fraunces), serif;
+  --font-body: var(--font-plus-jakarta-sans), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-cinzel: var(--font-cinzel-family), serif;
+  --font-cormorant: var(--font-cormorant-family), serif;
+  --font-syne: var(--font-syne-family), sans-serif;
+}
+
+:root {
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+  --font-fraunces: "Fraunces", serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-cinzel-family: "Cinzel", serif;
+  --font-cormorant-family: "Cormorant Garamond", serif;
+  --font-syne-family: "Syne", sans-serif;
+
+  /* High-tech, precise, and sleek Deep Charcoal & Mint theme (Dark mode by default) */
+  --bg-primary: #121417;
+  --bg-surface: #1C1F26;
+  --bg-dark: #0A0C0E;
+  --text-primary: #F1F3F5;
+  --text-secondary: #868E96;
+  --accent: #82C91E;
+  --accent-subtle: #222920;
+  --border: #2D323E;
+
+  --spotlight-glow: radial-gradient(circle, rgba(130, 201, 30, 0.055) 0%, rgba(130, 201, 30, 0) 70%);
+  --bg-grid-color: rgba(130, 201, 30, 0.04);
+  --bg-dot-color: rgba(130, 201, 30, 0.06);
+  --nav-bg: rgba(18, 20, 23, 0.65);
+}
+
+.light {
+  /* Precise and clean White Theme (Light mode override) */
+  --bg-primary: #FFFFFF;
+  --bg-surface: #F8F9FA;
+  --bg-dark: #E9ECEF;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --accent: #74B816;
+  --accent-subtle: #F4FCE3;
+  --border: #E9ECEF;
+
+  --spotlight-glow: radial-gradient(circle, rgba(116, 184, 22, 0.035) 0%, rgba(116, 184, 22, 0) 70%);
+  --bg-grid-color: rgba(116, 184, 22, 0.05);
+  --bg-dot-color: rgba(116, 184, 22, 0.07);
+  --nav-bg: rgba(255, 255, 255, 0.65);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg-primary);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #020617;
-  --primary: #020617;
-  --secondary: #64748b;
-  --accent: #10b981;
-  --muted: #f8fafc;
-  --border: #f1f5f9;
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dark {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --primary: #f8fafc;
-  --secondary: #94a3b8;
-  --accent: #10b981;
-  --muted: #0f172a;
-  --border: #1e293b;
+/* ── Hide native scrollbar (custom React scrollbar used instead) ── */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+  display: none;
 }
 
-@layer base {
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    cursor: none !important;
-  }
-  a, button, [role="button"] {
-    cursor: none !important;
-  }
+/* Hide scrollbars on all inner overflow containers */
+*:not(html)::-webkit-scrollbar {
+  display: none;
+}
+*:not(html) {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 /* Force hide Next.js Dev Indicator Badge */
@@ -61,76 +100,97 @@ html {
   pointer-events: none !important;
 }
 
-@layer utilities {
-  .glass {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  }
-  
-  .glass-heavy {
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    background: rgba(255, 255, 255, 0.4) !important;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-  }
-  
-  .dark .glass {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.05));
-    border: 1px solid rgba(255, 255, 255, 0.03);
-  }
-
-  .dark .glass-heavy {
-    background: rgba(2, 6, 23, 0.4) !important;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-  }
-
-  .text-glow {
-    text-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
-  }
-  
-  .bg-grid {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
-  }
-
-  .gradient-border {
-    position: relative;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(59, 130, 246, 0.5));
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: xor;
-    -webkit-mask-composite: destination-out;
-  }
-
-  .premium-gradient {
-    background: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* Base custom styles */
+h1, h2, h3, h4, h5, h6, .font-display, .navbar-logo {
+  font-family: var(--font-fraunces), serif !important;
 }
 
-@keyframes mobile-pulse {
-  0% { top: 0%; opacity: 0; }
-  50% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+p, span, a, button, div, li, .font-body {
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
 }
 
-@media (max-width: 768px) {
-    .glass, .glass-heavy {
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
-        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2) !important;
-    }
-    
-    .bg-grid {
-        background-size: 30px 30px;
-    }
+code, pre, .mono-text, .font-mono {
+  font-family: var(--font-jetbrains-mono), monospace !important;
 }
+
+/* Smooth link animations */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Premium Smartphone Mockup Utility */
+.phone-mockup-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--bg-surface) 0%, var(--bg-dark) 100%);
+  padding: 1.5rem;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 160px;
+  height: 320px;
+  border-radius: 28px;
+  border: 5px solid #2D323E;
+  background-color: #000000;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 5px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Larger version for featured cards and modals */
+.phone-mockup-large {
+  width: 210px;
+  height: 420px;
+  border-radius: 36px;
+  border: 6px solid #2D323E;
+}
+
+/* Dynamic island */
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 11px;
+  border-radius: 10px;
+  background-color: #121417;
+  z-index: 30;
+}
+
+.phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #0d0e12;
+}
+
+.phone-screen-large {
+  border-radius: 26px;
+}
+

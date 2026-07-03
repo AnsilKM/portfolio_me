@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Spotlight from "@/components/spotlight";
-import Cursor from "@/components/cursor";
 import SmoothScroll from "@/components/smooth-scroll";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
-  title: "Muhammed Ansil | Android Developer Portfolio",
-  description: "Modern, professional, and interactive portfolio of Muhammed Ansil, an Android Developer specializing in Kotlin, Jetpack Compose, and KMP.",
+  title: "Muhammed Ansil | Mobile Application Developer Portfolio",
+  description: "Professional portfolio of Muhammed Ansil, specializing in Android, Flutter, and Kotlin Multiplatform (KMP) development.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -22,8 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased overflow-x-hidden`}>
-        <div className="grainy-overlay" />
+      <body
+        className="antialiased bg-bg-primary text-text-primary overflow-x-hidden"
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -31,8 +31,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SmoothScroll>
-            <Spotlight />
-            <Cursor />
             {children}
             <Analytics />
             <SpeedInsights />

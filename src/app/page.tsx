@@ -1,42 +1,21 @@
-"use client"
-
-import React, { useEffect } from "react"
-import Lenis from "lenis"
-import Navbar from "@/components/navbar"
-import Hero from "@/components/hero"
-import About from "@/components/about"
-import Skills from "@/components/skills"
-import Projects from "@/components/projects"
-import Experience from "@/components/experience"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
+import Navbar from "../components/ui/Navbar";
+import Hero from "../components/sections/Hero";
+import Skills from "../components/sections/Skills";
+import Experience from "../components/sections/Experience";
+import Projects from "../components/sections/Projects";
+import Contact from "../components/sections/Contact";
+import SpotlightBackground from "../components/ui/SpotlightBackground";
 
 export default function Home() {
-  useEffect(() => {
-    const lenis = new Lenis()
-
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-
-    return () => {
-      lenis.destroy()
-    }
-  }, [])
-
   return (
-    <main className="relative min-h-screen" suppressHydrationWarning>
+    <main className="min-h-screen relative bg-bg-primary text-text-primary selection:bg-accent/20 selection:text-text-primary overflow-hidden">
+      <SpotlightBackground />
       <Navbar />
       <Hero />
-      <About />
       <Skills />
-      <Projects />
       <Experience />
+      <Projects />
       <Contact />
-      <Footer />
     </main>
-  )
+  );
 }
