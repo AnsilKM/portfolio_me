@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className="antialiased bg-bg-primary text-text-primary overflow-x-hidden"
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
