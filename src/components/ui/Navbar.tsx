@@ -53,7 +53,7 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-5xl w-[92%] z-50 rounded-full overflow-hidden transition-all duration-300 ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 max-w-5xl w-[92%] z-50 rounded-full transition-all duration-300 ${
           isScrolled
             ? "border border-[var(--border)] backdrop-blur-md py-3.5 shadow-md"
             : "border border-transparent py-4 bg-transparent"
@@ -63,10 +63,12 @@ export default function Navbar() {
         }}
       >
         {/* Scroll Progress Line */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--accent)] origin-left"
-          style={{ scaleX }}
-        />
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] overflow-hidden rounded-b-full pointer-events-none">
+          <motion.div
+            className="w-full h-full bg-[var(--accent)] origin-left"
+            style={{ scaleX }}
+          />
+        </div>
         <div className="w-full px-6 flex items-center justify-between">
           <a
             href="#"
